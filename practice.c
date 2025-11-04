@@ -2,23 +2,46 @@
 #include <stdlib.h>
 
 //Given array silvoing for two-sum problem
-void twosum(int* arr[], int k, int len){
 
 
 
-    
-    for(int i = 0; i<len;i++ ){
-        for (int j = i+1; j <= len;j++){
-            if ( *arr[i] + *arr[j] == k){
-                printf("soln found: %d , %d , with values %d , %d \n", i , j , *arr[i], *arr[j]);
-            }
+
+
+int twosum(int arr[], int k, int len){
+    printf("check1 \n");
+
+    int left = 0;
+    int right = len -1; 
+    while (left<right){
+        printf("loop check \n");
+        int sum = arr[left] + arr[right] ;
+        if( sum == k){
             
-            
+            printf("soln found");
+            break;
         }
+        else if(sum < k){
+            left ++ ;
+            continue;
+        }
+        else if( sum > k){
+            right -- ;
+            continue;
+        }
+
+        printf("check3");
+
+
+
     }
-    printf("loop finished \n");
-    
-    
+
+    printf("left: %d , right: %d \n", left, right);
+    printf("soln values: %d , %d \n", arr[left], arr[right]);
+
+    return -1 ;
+
+
+
 }
 
 
@@ -26,9 +49,9 @@ void twosum(int* arr[], int k, int len){
 
 int main(){
 
-    int arr[3] = {1,2,3} ;
+    int arr[8] = {1,2,3,4,5,6,7,8};
 
-    twosum((int**)&arr , 4, 3);
+    twosum(arr , 20, 8);
 
 
     return 0;

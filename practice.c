@@ -3,6 +3,11 @@
 
 //Given array silvoing for two-sum problem
 
+int lenarray(int arr[], int size){
+    printf("length: %d \n", size);
+    return size;
+}
+
 
 
 
@@ -52,6 +57,7 @@ int main(){
     int arr[8] = {1,2,3,4,5,6,7,8};
 
     twosum(arr , 20, 8);
+    lenarray(arr);
 
 
     return 0;

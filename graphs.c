@@ -7,26 +7,6 @@ struct trQNode{
     struct trQNode* next;
 };
 
-void main(){
-    printf("graphs for dsa \n");
-    printf("BFS traversal of the graph: \n");
-    //assume the following given graph (claude sonnet 4 generated test case)
-    int graph[10][10] = {
-    {0,1,0,1,1,0,0,1,0,1},  // 0 connects to: 1,3,4,7,9
-    {1,0,1,0,1,1,0,0,1,0},  // 1 connects to: 0,2,4,5,8
-    {0,1,0,1,0,1,1,0,0,1},  // 2 connects to: 1,3,5,6,9
-    {1,0,1,0,0,0,1,1,1,0},  // 3 connects to: 0,2,6,7,8
-    {1,1,0,0,0,1,0,0,1,1},  // 4 connects to: 0,1,5,8,9
-    {0,1,1,0,1,0,1,1,0,0},  // 5 connects to: 1,2,4,6,7
-    {0,0,1,1,0,1,1,1,1,0},  // 6 connects to: 2,3,5,7,8
-    {1,0,0,1,0,1,1,0,0,1},  // 7 connects to: 0,3,5,6,9
-    {0,1,0,1,1,0,1,0,0,1},  // 8 connects to: 1,3,4,6,9
-    {1,0,1,0,1,0,0,1,1,0}   // 9 connects to: 0,2,4,7,8
-    };
-
-    BFS_Traversal(10, graph);
-
-}
 
 
 int exists_in_queue(struct trQNode* head, int value){ // not in use as i am checking using visited array
@@ -117,3 +97,51 @@ void BFS_Traversal (int n, int graph[n][n]){
         }    
     }
 }
+
+
+void DFS_Traversal(int vertex,int n, int graph[n][n],int visited[n]){ //recursive function the "stack call is manged my compiler and hadles backtrack" 
+    // DFS implementation to be added
+    
+    //mark current vertex as visited 
+    visited[vertex]=1;
+    printf("%d ",vertex);
+
+    //try each neighbour
+    for(int i=0; i<n; i++){
+        if(graph[vertex][i] && !visited[i]){
+            DFS_Traversal(i, n, graph, visited);
+        }
+    }
+
+
+}
+
+
+int main(){
+    printf("graphs for dsa \n");
+    printf("BFS traversal of the graph: \n");
+    //assume the following given graph (claude sonnet 4 generated test case)
+    int graph[10][10] = {
+    {0,1,0,1,1,0,0,1,0,1},  // 0 connects to: 1,3,4,7,9
+    {1,0,1,0,1,1,0,0,1,0},  // 1 connects to: 0,2,4,5,8
+    {0,1,0,1,0,1,1,0,0,1},  // 2 connects to: 1,3,5,6,9
+    {1,0,1,0,0,0,1,1,1,0},  // 3 connects to: 0,2,6,7,8
+    {1,1,0,0,0,1,0,0,1,1},  // 4 connects to: 0,1,5,8,9
+    {0,1,1,0,1,0,1,1,0,0},  // 5 connects to: 1,2,4,6,7
+    {0,0,1,1,0,1,1,1,1,0},  // 6 connects to: 2,3,5,7,8
+    {1,0,0,1,0,1,1,0,0,1},  // 7 connects to: 0,3,5,6,9
+    {0,1,0,1,1,0,1,0,0,1},  // 8 connects to: 1,3,4,6,9
+    {1,0,1,0,1,0,0,1,1,0}   // 9 connects to: 0,2,4,7,8
+    };
+
+    BFS_Traversal(10, graph);
+
+     printf("\nDFS traversal:\n");
+    int visited_dfs[10] = {0};
+    DFS_Traversal(0, 10, graph, visited_dfs);// start with verttex 0
+
+
+    return 0;
+
+}
+

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "heap.c"
+#include "heap.c" // complies with this files so i can call funtion from ther
 
 int correct_queryfile(const char* filename) {
     FILE* file = fopen(filename, "r");
@@ -25,7 +25,7 @@ int correct_queryfile(const char* filename) {
         
         // Convert characters to lowercase until space
         while (line[i] != '\0' && line[i] != ' ') {
-            fputc(tolower(line[i]), output);
+            fputc(tolower(line[i]), output); // using builtin function from ctype.h
             i++;
         }
         

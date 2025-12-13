@@ -110,7 +110,7 @@ int keys_corrected(char* filename){
             }
         
         
-            int len = end - start; // length of stuff after key 1
+            int len = end - start; // length of stuff after key1=
             strncpy(key1_val, start, len); // copy exactly n charachters(len) from start to key1_val and saves to key1_val array
             key1_val[len] = '\0'; // null terminate (i pickerd thos from the glorious internet) removes grabage avles nd only keeps valid stuff
         
